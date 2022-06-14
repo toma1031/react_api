@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-
+import {Button} from '@material-ui/core';
 
 const Top = () => {
   const [post, setPosts] = useState([]);
@@ -10,6 +10,8 @@ const Top = () => {
   const gradesAverage = (grades) => {
     let sum = 0;
     // grades変数に入っているdata.gradesをforEachでそれぞれ取り出して、score変数に格納
+    // forEachは配列専用のループ処理を行います、今回のように配列の処理にはforよりforEachの方がスマートにかけ、
+    // 処理も早いので向いています。
     grades.forEach(function(score) {
       // score変数はそのままだとstr型なのでint型に変換、そしてループを回している間sum変数に足していく
       sum += Number(score);
@@ -34,20 +36,28 @@ const Top = () => {
     })
   }, []);
 
+
+
   return (
     <div>
       {post.map((data, i) => 
         // keyは一つの大きな要素に対して一つ、しかもユニークである必要があります。
         // ですので、<div>の中に<p>要素を複数配置するのであれば、大元の<div>にkeyをつけてやるとうまくいくと思います。
         <div key={i}>
-        <p >ID: {data.id}</p>
-        <p>Name: {data.firstName} {data.lastName}</p>
-        <p>City: {data.city}</p>
-        <p>Company: {data.company}</p>
-        <p>Average Grade:{gradesAverage(data.grades)}</p>
+        <div className="flex">
+        <div className="image">
+        <img src={data.pic} className="profile" />
+        </div>
+        <div>
+        <p className="name">{data.firstName} {data.lastName}</p>
+        <div className="info">
         <p>Email: {data.email}</p>
+        <p>Company: {data.company}</p>
         <p>Skill: {data.skill}</p>
-        <img src={data.pic} />
+        <p>Average Grade: {gradesAverage(data.grades)}%</p>
+        </div>
+        </div>
+        </div>
         </div>
       )}
     </div>
