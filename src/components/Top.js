@@ -37,7 +37,7 @@ const Top = () => {
       // includesメソッドは、特定の要素が配列に含まれているかどうかを true または false で返します。
       // よって、今回のコードでは
       // allPostsの中でfirstNameが検索ワードと一致する場合、その要素を配列として返す　という処理を行なっています。
-      return output.firstName.includes(data.search)||output.lastName.includes(data.search);
+      return output.firstName.toLowerCase().includes(data.search.toLowerCase())||output.lastName.toLowerCase().includes(data.search.toLowerCase());
     });
     console.log(result)
     setPosts(result);
