@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { useForm } from "react-hook-form";
-
+​
 const Top = () => {
   const [ posts, setPosts] = useState([]);
   const [ allPosts, setAllPosts] = useState([]);
   const { register, handleSubmit } = useForm();
-
+​
   // Gradeの平均スコアを出す関数
   const gradesAverage = (grades) => {
     let sum = 0;
@@ -16,10 +16,9 @@ const Top = () => {
     let ave = sum / grades.length
     return ave;
   };
-
   // ユーザーの入力キーワードをState化する
   const [searchKeyword, setSearchKeyword] = React.useState("");
-
+​
   useEffect(() => {
     axios.get('https://api.hatchways.io/assessment/students')
     .then(result => {
@@ -27,22 +26,16 @@ const Top = () => {
       setAllPosts(result.data.students);
     })
   }, []);
-
+​
   const getSearchResult = (data) => {
     // console.log(data.search)
     setSearchKeyword(data.search)
     const result = allPosts.filter((output, index) => {
-      console.log(output)
-      // filterメソッドは、メソッド内で定義した条件がtrueな要素だけ配列として返すという役割を持っています。
-      // includesメソッドは、特定の要素が配列に含まれているかどうかを true または false で返します。
-      // よって、今回のコードでは
-      // allPostsの中でfirstNameが検索ワードと一致する場合、その要素を配列として返す　という処理を行なっています。
-      return output.firstName.includes(data.search)||output.lastName.includes(data.search);
+      return output.firstName.includes(data.search);
     });
-    console.log(result)
     setPosts(result);
   }
-
+​
   return (
     <div>
       <div>
