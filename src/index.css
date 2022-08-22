@@ -44,3 +44,18 @@ code {
 .info {
   text-align: left
 }
+
+input {
+  /* 参照
+  https://ryunosukeblog.tatu-hobby.com.tatu-hobby.com/2020/10/28/htmlcss-input-outline/
+  https://hirako50.com/blog/searchbox-customize/ */
+  font-family: 'Raleway';
+  font-size: 14px;
+  padding: 16px 20px;
+  background-color:#fff;
+  outline: none;
+  border: 0;
+  border-radius: 0;
+  border-bottom: solid 2px black;
+  width: 90%;
+  }

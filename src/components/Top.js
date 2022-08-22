@@ -62,7 +62,7 @@ const Top = () => {
     <div>
       <div>
       {/* <form onChange={handleSubmit(getSearchResult)}> */}
-      <input placeholder="" className='' value={searchKeyword} onChange={(e) => setSearchKeyword(e.target.value)}/>
+      <input className="search-box" placeholder="" value={searchKeyword} onChange={(e) => setSearchKeyword(e.target.value)}/>
       {/* <input placeholder="" className='' {...register('search', { required: true })}/> */}
       {/* <input className='btn btn-secondary' type="submit" value="Search" /> */}
       {/* </form> */}
