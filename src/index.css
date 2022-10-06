@@ -25,6 +25,7 @@ code {
 }
 
 .flex{
+  position: relative;
   margin-left: 30px;
   display: flex;
   gap: 100px;
@@ -40,6 +41,7 @@ code {
   border-radius: 50%;
 
 }
+
 
 .info {
   text-align: left
@@ -58,4 +60,19 @@ input {
   border-radius: 0;
   border-bottom: solid 2px black;
   width: 90%;
+  }
+
+  .button {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  
+  .button_p{
+    font-size: 50px;
+    color: gray;
   }
