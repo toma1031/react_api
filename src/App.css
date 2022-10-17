@@ -37,4 +37,24 @@
   }
 }
 
+ul {
+  padding: 0;
+}
+li{
+  display:block;
+}
 
+.tags-input {
+  
+}
+
+.tag {
+  background-color: rgb(230, 230, 230);
+  width: 70px;
+  height: 40px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  margin-bottom: 5px;
+}

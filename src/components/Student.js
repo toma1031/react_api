@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import TagsInput from './TagsInput';
 
 const Student = (props) => {
 const [show, setShow] = useState(false)
@@ -40,6 +41,7 @@ const [show, setShow] = useState(false)
                         <p>Test 8: {props.data.grades[7]}%</p>
                     </>
                 }
+                <TagsInput />
             </div>
         </div>
     </div>
