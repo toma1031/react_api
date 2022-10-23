@@ -9,6 +9,7 @@ const Top = () => {
 
   // ユーザーの入力キーワードをState化する,検索キーワードをstateとして持つ
   const [searchKeyword, setSearchKeyword] = React.useState("");
+  const [searchTagKeyword, setTagSearchKeyword] = React.useState("");
   console.log(searchKeyword)
 
   useEffect(() => {
@@ -46,10 +47,23 @@ const Top = () => {
     setPosts(result);
   };
 
+  
+  const getTagSearchResult = () => {
+    console.log(searchTagKeyword)
+    const result = allPosts.filter((output, index) => {
+      return output.lastName.toLowerCase().includes(searchTagKeyword.toLowerCase());
+    });
+    console.log(result)
+    setPosts(result);
+  };
+
   return (
     <div>
       <div>
       <input className="search-box" placeholder="" value={searchKeyword} onChange={(e) => setSearchKeyword(e.target.value)}/>
+      </div>
+      <div>
+      <input className="search-box" placeholder="" value={searchTagKeyword} onChange={(e) => setSearchKeyword(e.target.value)}/>
       </div>
       <div>
       {searchKeyword &&

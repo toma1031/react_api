@@ -15,14 +15,14 @@ const TagsInput = () => {
 
     return (
         <div className="tags-input">
-            <>
+            <div className="tags_section">
                 {tags.map((tag, index) => (
                     <div className="tag tag-flex" key={index}>
                             <p className="tag-p">{tag}</p>
                             {/* <p className="" onClick={() => removeTags(index)} > X</p> */}
                     </div>
                 ))}
-            </>
+            </div>
             <input
                 type="text"
                 onKeyUp={event => addTags(event)}
