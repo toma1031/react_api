@@ -1,16 +1,22 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import Student from './Student';
+//３、子コンポーネントを読み込む
+import TagsInput from "./TagsInput";
 
 const Top = () => {
   const [ posts, setPosts] = useState([]);
   const [ allPosts, setAllPosts] = useState([]);
 
-
+  let tag_list = []
   // ユーザーの入力キーワードをState化する,検索キーワードをstateとして持つ
   const [searchKeyword, setSearchKeyword] = React.useState("");
   const [searchTagKeyword, setTagSearchKeyword] = React.useState("");
   console.log(searchKeyword)
+
+  //５、子コンポーネントからもらったtags変数を貰い受けるtags_from_tagsinput変数を宣言
+  const[tags_from_tagsinput, setTagsinput]= useState("");
+  console.log(tags_from_tagsinput);
 
   useEffect(() => {
     axios.get('https://api.hatchways.io/assessment/students')
@@ -30,7 +36,7 @@ const Top = () => {
     // https://qiita.com/k-penguin-sato/items/9373d87c57da3b74a9e6
     [searchKeyword]);
 
-
+console.log(posts)
   // 検索キーワード（searchKeyword）をstateとして持ち、getSearchResult()で使うようにする
   const getSearchResult = () => {
     // console.log(data.search)
@@ -47,6 +53,7 @@ const Top = () => {
     setPosts(result);
   };
 
+
   
   const getTagSearchResult = () => {
     console.log(searchTagKeyword)
@@ -59,6 +66,8 @@ const Top = () => {
 
   return (
     <div>
+      {/* ４、TagsInput.jsを読み込む、読み込みつつtextを更新するsetTagsinput関数を渡す。*/}
+      <TagsInput setTagsinput={setTagsinput}/>
       <div>
       <input className="search-box" placeholder="" value={searchKeyword} onChange={(e) => setSearchKeyword(e.target.value)}/>
       </div>

@@ -1,8 +1,20 @@
 // https://dev.to/prvnbist/create-a-tags-input-component-in-reactjs-ki
+// https://qiita.com/aliceroot0678/items/e4eabcbe3f9f79cada55
 
 import React from "react";
-const TagsInput = () => {
+//propsで値を受け取る宣言。
+const TagsInput = (props) => {
+    //1, 入力したtagをいれておくtags変数を定義。（tags変数の値を親コンポーネントTop.jsに渡したい）
     const [tags, setTags] = React.useState([]);
+
+    //2, 親コンポーネントからもらった関数にformTextを入れて返す。
+    // props.setTagsinput(tags);
+    console.log(props)
+
+    let tag_list = []
+    tag_list.push(tags);
+
+
     const addTags = event => {
       if (event.key === "Enter" && event.target.value !== "") {
           setTags([...tags, event.target.value]);
