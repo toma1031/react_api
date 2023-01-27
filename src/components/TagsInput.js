@@ -7,8 +7,6 @@ const TagsInput = (props) => {
     //1, 入力したtagをいれておくtags変数を定義。（tags変数の値を親コンポーネントTop.jsに渡したい）
     const [tags, setTags] = React.useState([]);
 
-    //2, 親コンポーネントからもらった関数にformTextを入れて返す。
-    // props.setTagsinput(tags);
     console.log(props)
 
     let tag_list = []
@@ -18,6 +16,8 @@ const TagsInput = (props) => {
     const addTags = event => {
       if (event.key === "Enter" && event.target.value !== "") {
           setTags([...tags, event.target.value]);
+          //2、ここで親であるStudent.jsにtagsの中身を渡す
+          props.setStudentTags(tags);
           event.target.value = "";
       }
     };
@@ -37,9 +37,10 @@ const TagsInput = (props) => {
             </div>
             <input
                 type="text"
-                onKeyUp={event => addTags(event)}
+                onKeyUp={event => addTags(event)} 
                 placeholder="Press enter to add tags"
             />
+
         </div>
     );
 };

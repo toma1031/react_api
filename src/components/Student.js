@@ -41,7 +41,8 @@ const [show, setShow] = useState(false)
                         <p>Test 8: {props.data.grades[7]}%</p>
                     </>
                 }
-                <TagsInput />
+                {/* ３、ここでTagsInput.jsからsetStudentTagsの中身であるtagsを拾ってくる */}
+                <TagsInput setStudentTags={props.setStudentTags} />
             </div>
         </div>
     </div>

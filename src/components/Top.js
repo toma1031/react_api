@@ -8,15 +8,22 @@ const Top = () => {
   const [ posts, setPosts] = useState([]);
   const [ allPosts, setAllPosts] = useState([]);
 
+
+
   let tag_list = []
   // ユーザーの入力キーワードをState化する,検索キーワードをstateとして持つ
   const [searchKeyword, setSearchKeyword] = React.useState("");
   const [searchTagKeyword, setTagSearchKeyword] = React.useState("");
   console.log(searchKeyword)
 
-  //５、子コンポーネントからもらったtags変数を貰い受けるtags_from_tagsinput変数を宣言
+  //６、子コンポーネントからもらったtags変数を貰い受けるtags_from_tagsinput変数を宣言
   const[tags_from_tagsinput, setTagsinput]= useState("");
   console.log(tags_from_tagsinput);
+
+// ５、ここでTagsInput.jsから引き継いできたtagsをsetTagsinput関数へ渡す
+  const setTagsFromStudent = (tags) => {
+    setTagsinput(tags);
+  };
 
   useEffect(() => {
     axios.get('https://api.hatchways.io/assessment/students')
@@ -81,7 +88,8 @@ console.log(posts)
       {posts ?
       <>
         {posts.map((data, i) =>
-          <Student data={data} />
+        // ４、Student.jsからもらってきたsetStudentTagをsetTagsFromStudent関数に流してやる
+          <Student data={data} setStudentTags={setTagsFromStudent} />
         )}
       </>
       :
