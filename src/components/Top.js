@@ -20,6 +20,8 @@ const Top = () => {
   const[tags_from_tagsinput, setTagsinput]= useState("");
   console.log(tags_from_tagsinput);
 
+  tags_from_tagsinput_all = []
+
 // ５、ここでTagsInput.jsから引き継いできたtagsをsetTagsinput関数へ渡す
   const setTagsFromStudent = (tags) => {
     setTagsinput(tags);
@@ -74,7 +76,7 @@ console.log(posts)
   return (
     <div>
       {/* ４、TagsInput.jsを読み込む、読み込みつつtextを更新するsetTagsinput関数を渡す。*/}
-      <TagsInput setTagsinput={setTagsinput}/>
+      {/* <TagsInput setTagsinput={setTagsinput}/> */}
       <div>
       <input className="search-box" placeholder="" value={searchKeyword} onChange={(e) => setSearchKeyword(e.target.value)}/>
       </div>
