@@ -4,6 +4,8 @@ import TagsInput from './TagsInput';
 const Student = (props) => {
 const [show, setShow] = useState(false)
 
+const { tags, setTags } = props;
+
 // Gradeの平均スコアを出す関数
   const gradesAverage = (grades) => {
     let sum = 0;
@@ -41,8 +43,8 @@ const [show, setShow] = useState(false)
                         <p>Test 8: {props.data.grades[7]}%</p>
                     </>
                 }
-                {/* ３、ここでTagsInput.jsからsetStudentTagsの中身であるtagsを拾ってくる */}
-                <TagsInput setStudentTags={props.setStudentTags} />
+                {/* 子であるTagsInput.jsへtagsを渡す方法２B、Top.jsから渡ってきたtags, setTagsを子（TagsInput.js）にpropsで渡していく */}
+                <TagsInput tags={tags} setTags={setTags}/>
             </div>
         </div>
     </div>

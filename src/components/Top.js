@@ -8,7 +8,8 @@ const Top = () => {
   const [ posts, setPosts] = useState([]);
   const [ allPosts, setAllPosts] = useState([]);
 
-
+  // 子であるTagsInput.jsへtagsを渡す方法１、Topで tags, setTagsを定義する
+  const [tags, setTags] = React.useState([]);
 
   let tag_list = []
   // ユーザーの入力キーワードをState化する,検索キーワードをstateとして持つ
@@ -20,12 +21,6 @@ const Top = () => {
   const[tags_from_tagsinput, setTagsinput]= useState("");
   console.log(tags_from_tagsinput);
 
-  tags_from_tagsinput_all = []
-
-// ５、ここでTagsInput.jsから引き継いできたtagsをsetTagsinput関数へ渡す
-  const setTagsFromStudent = (tags) => {
-    setTagsinput(tags);
-  };
 
   useEffect(() => {
     axios.get('https://api.hatchways.io/assessment/students')
@@ -90,8 +85,8 @@ console.log(posts)
       {posts ?
       <>
         {posts.map((data, i) =>
-        // ４、Student.jsからもらってきたsetStudentTagをsetTagsFromStudent関数に流してやる
-          <Student data={data} setStudentTags={setTagsFromStudent} />
+          // 子であるTagsInput.jsへtagsを渡す方法２A、それを子（Student.jsとTagsInput.js）にpropsで渡していく
+          <Student data={data} tags={tags} setTags={setTags}/>
         )}
       </>
       :
