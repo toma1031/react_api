@@ -8,8 +8,134 @@ const Top = () => {
   const [ posts, setPosts] = useState([]);
   const [ allPosts, setAllPosts] = useState([]);
 
-  // 子であるTagsInput.jsへtagsを渡す方法１、Topで tags, setTagsを定義する
-  const [tags, setTags] = React.useState([]);
+  // 子であるStudent.jsから、その子であるTagsInput.jsへtagsを渡す方法１、Topで allTagsList setTagsを定義する
+  const [allTagsList, setTags] = React.useState([
+    {
+      studentId:1,
+      tags:[
+      ],
+    },
+    {
+      studentId:2,
+      tags:[
+      ],
+    },
+    {
+      studentId:3,
+      tags:[
+      ],
+    },
+    {
+      studentId:4,
+      tags:[
+      ],
+    },
+    {
+      studentId:5,
+      tags:[
+      ],
+    },
+    {
+      studentId:6,
+      tags:[
+      ],
+    },
+    {
+      studentId:7,
+      tags:[
+      ],
+    },
+    {
+      studentId:8,
+      tags:[
+      ],
+    },
+    {
+      studentId:9,
+      tags:[
+      ],
+    },
+    {
+      studentId:10,
+      tags:[
+      ],
+    },
+    {
+      studentId:11,
+      tags:[
+      ],
+    },
+    {
+      studentId:12,
+      tags:[
+      ],
+    },
+    {
+      studentId:13,
+      tags:[
+      ],
+    },
+    {
+      studentId:14,
+      tags:[
+      ],
+    },
+    {
+      studentId:15,
+      tags:[
+      ],
+    },
+    {
+      studentId:16,
+      tags:[
+      ],
+    },
+    {
+      studentId:17,
+      tags:[
+      ],
+    },
+    {
+      studentId:18,
+      tags:[
+      ],
+    },
+    {
+      studentId:19,
+      tags:[
+      ],
+    },
+    {
+      studentId:20,
+      tags:[
+      ],
+    },
+    {
+      studentId:21,
+      tags:[
+      ],
+    },
+    {
+      studentId:22,
+      tags:[
+      ],
+    },
+    {
+      studentId:23,
+      tags:[
+      ],
+    },
+    {
+      studentId:24,
+      tags:[
+      ],
+    },
+    {
+      studentId:25,
+      tags:[
+      ],
+    },
+  ]);
 
   let tag_list = []
   // ユーザーの入力キーワードをState化する,検索キーワードをstateとして持つ
@@ -68,6 +194,7 @@ console.log(posts)
     setPosts(result);
   };
 
+
   return (
     <div>
       {/* ４、TagsInput.jsを読み込む、読み込みつつtextを更新するsetTagsinput関数を渡す。*/}
@@ -86,7 +213,7 @@ console.log(posts)
       <>
         {posts.map((data, i) =>
           // 子であるTagsInput.jsへtagsを渡す方法２A、それを子（Student.jsとTagsInput.js）にpropsで渡していく
-          <Student data={data} tags={tags} setTags={setTags}/>
+          <Student data={data} allTagsList={allTagsList} setTags={setTags}/>
         )}
       </>
       :
