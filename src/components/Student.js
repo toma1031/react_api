@@ -43,7 +43,7 @@ const [show, setShow] = useState(false)
                 }
                 {/* 子であるTagsInput.jsへtagsを渡す方法２B、Top.jsから渡ってきたtags, setTagsを子（TagsInput.js）にpropsで渡していく */}
                 {/* <TagsInput tags={props.tags[props.studentId]} setTags={props.setTags}/> */}
-                <TagsInput tags={props.allTagsList} setTags={props.setTags}/>
+                <TagsInput allTagsList={props.allTagsList} setTags={props.setTags} studentId={props.data.id}/>
             </div>
         </div>
     </div>

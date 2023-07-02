@@ -70,7 +70,8 @@ const TagsInput = (props) => {
       if (event.key === "Enter" && event.target.value !== "") {
           props.setTags((prevTags) => {
             return prevTags.map((student) => {
-            if (student.studentId === 2) {
+              // student.studentId がnumberなのに対して props.studentId がstringなので厳密等価演算子(===)ではなくただの等価演算子を使用しています。
+            if (student.studentId == props.studentId) {
               return {
                 ...student,
                 tags: [...student.tags, event.target.value],
