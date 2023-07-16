@@ -74,12 +74,13 @@ const TagsInput = (props) => {
             if (student.studentId == props.studentId) {
               return {
                 ...student,
-                tags: [...student.tags, event.target.value],
+                tags: [[...student.tags], [event.target.value]],
               };
             }
           return student;
         });
       });
+      event.target.value = ""; // 入力フィールドの値を空にする
       }
     };
 
@@ -90,12 +91,17 @@ const TagsInput = (props) => {
                 {props.allTagsList
                     ?
                     <>
-                        {props.allTagsList.map((tag, index) => (
-                        <div className="tag tag-flex" key={index}>
-                                <p className="tag-p">{tag.tags}</p>
-                                {/* <p className="" onClick={() => removeTags(index)} > X</p> */}
-                        </div>
-                        ))}
+                        {/* その生徒の数とTop.jsに格納されている全てのタグの中からstudentIdが一致するものを表示 */}
+                        <>
+                          {props.allTagsList.map((tag, index) => (
+                            <div className="tag tag-flex" key={index}>
+                            {props.studentId == tag.studentId &&
+                                  <p className="tag-p">{tag.tags}</p>
+                            }
+                          </div>
+                          ))}
+                        </>
+                        
                     </>
                     :
                     <div></div>
