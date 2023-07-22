@@ -88,24 +88,17 @@ const TagsInput = (props) => {
         <div className="tags-input">
             <div className="tags_section">
                 {/* props.tagsの中身がある場合はmapでprops.tagsの中身を表示させるようにする、ない場合は表示しない */}
-                {props.allTagsList
-                    ?
-                    <>
-                        {/* その生徒の数とTop.jsに格納されている全てのタグの中からstudentIdが一致するものを表示 */}
-                        <>
-                          {props.allTagsList.map((tag, index) => (
-                            <div className="tag tag-flex" key={index}>
-                            {props.studentId == tag.studentId &&
-                                  <p className="tag-p">{tag.tags}</p>
-                            }
-                          </div>
-                          ))}
-                        </>
-                        
-                    </>
-                    :
-                    <div></div>
-                }
+                {props.allTagsList.map((tagList, index) => (
+                <>
+                  {props.studentId == tagList.studentId && (
+                    <div className="tag tag-flex" key={index}>
+                      {tagList.tags.map((tag, index) => (
+                        <p className="tag-p">{tag}</p>
+                      ))}
+                    </div>
+                  )}
+                </>
+              ))}
             </div>
             <input type="text"
                   onKeyUp={event => addTags(event)} 
