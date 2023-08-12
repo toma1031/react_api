@@ -156,6 +156,9 @@ const Top = () => {
       if (searchKeyword) {
         getSearchResult()
       }
+      if (searchTagKeyword) {
+        getTagSearchResult()
+      }
     })},
     // onChangeでsearchKeyword変数を更新しているので、その度にgetSearchResult()を発火させたいです。
     // そのためには、searchKeywordが更新されるたびにuseEffectを再発火させたいです。
@@ -188,7 +191,7 @@ console.log(posts)
   const getTagSearchResult = () => {
     console.log(searchTagKeyword)
     const result = allPosts.filter((output, index) => {
-      return output.lastName.toLowerCase().includes(searchTagKeyword.toLowerCase());
+      return output.????.toLowerCase().includes(searchTagKeyword.toLowerCase());
     });
     console.log(result)
     setPosts(result);
@@ -203,7 +206,7 @@ console.log(posts)
       <input className="search-box" placeholder="" value={searchKeyword} onChange={(e) => setSearchKeyword(e.target.value)}/>
       </div>
       <div>
-      <input className="search-box" placeholder="" value={searchTagKeyword} onChange={(e) => setSearchKeyword(e.target.value)}/>
+      <input className="search-box" placeholder="" value={searchTagKeyword} onChange={(e) => setTagSearchKeyword(e.target.value)}/>
       </div>
       <div>
       {searchKeyword &&
