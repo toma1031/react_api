@@ -189,11 +189,18 @@ console.log(posts)
 
   
   const getTagSearchResult = () => {
-    console.log(searchTagKeyword)
-    const result = allPosts.filter((output, index) => {
-      return output.????.toLowerCase().includes(searchTagKeyword.toLowerCase());
+    console.log(searchTagKeyword);
+    const result = allTagsList.filter((student) => {
+      // 学生のタグ情報を取得
+      const studentTags = student.tags;
+      // 学生のstudentIdに基づいて、該当するpost（Studentコンポーネント）を取得
+      const studentPost = posts.find((post) => post.id === student.studentId);
+      if (studentPost) {
+        // 該当するpostが存在し、そのtagsが検索タグのキーワードを含むかどうかチェック
+        return studentTags.includes(searchTagKeyword);
+      }
     });
-    console.log(result)
+    console.log(result);
     setPosts(result);
   };
 
