@@ -167,7 +167,7 @@ const Top = () => {
     // searchKeywordが更新されるたびに、第１引数の中身を実行します
     // 参照
     // https://qiita.com/k-penguin-sato/items/9373d87c57da3b74a9e6
-    [searchKeyword]);
+    [searchKeyword, searchTagKeyword]);
 
 console.log(posts)
   // 検索キーワード（searchKeyword）をstateとして持ち、getSearchResult()で使うようにする
@@ -193,8 +193,10 @@ console.log(posts)
     const result = allTagsList.filter((student) => {
       // 学生のタグ情報を取得
       const studentTags = student.tags;
+      console.log(studentTags);
       // 学生のstudentIdに基づいて、該当するpost（Studentコンポーネント）を取得
       const studentPost = posts.find((post) => post.id === student.studentId);
+      console.log(studentPost);
       if (studentPost) {
         // 該当するpostが存在し、そのtagsが検索タグのキーワードを含むかどうかチェック
         return studentTags.includes(searchTagKeyword);
