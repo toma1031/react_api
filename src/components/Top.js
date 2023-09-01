@@ -194,6 +194,10 @@ console.log(posts)
       // 学生のタグ情報を取得
       const studentTags = student.tags;
       console.log(studentTags);
+      // 取得できなかったらreturn
+      if (studentTags == null) {
+        return  
+      }
       // 学生のstudentIdに基づいて、該当するpost（Studentコンポーネント）を取得
       const studentPost = posts.find((post) => post.id === student.studentId);
       console.log(studentPost);
