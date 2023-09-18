@@ -133,7 +133,9 @@ const Top = () => {
             getSearchResult();
           }
           if (searchTagKeyword) {
-            getTagSearchResult();
+            // ここでsetPostsを呼び出してpostsを設定
+            setPosts(result.data.students);
+            getTagSearchResult(result.data.students);
           }
         });
     },
@@ -169,6 +171,10 @@ const Top = () => {
 
   const getTagSearchResult = () => {
     console.log(searchTagKeyword);
+    if (!posts) {
+      return; // postsがまだ設定されていない場合は処理をスキップ
+    }
+
     const result = allTagsList.filter((student) => {
       // 学生のタグ情報を取得
       const studentTags = student.tags;
