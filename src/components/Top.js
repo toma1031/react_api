@@ -169,9 +169,9 @@ const Top = () => {
     setPosts(result);
   };
 
-  const getTagSearchResult = () => {
+  const getTagSearchResult = (posts) => {
     console.log(searchTagKeyword);
-    if (!result.data.students) {
+    if (!posts) {
       return; // postsがまだ設定されていない場合は処理をスキップ
     }
 
@@ -184,8 +184,8 @@ const Top = () => {
         return;
       }
       // 学生のstudentIdに基づいて、該当するpost（Studentコンポーネント）を取得
-      const studentPost = result.data.students.find((post) => post.id === student.studentId);
-      console.log(result.data.students);
+      const studentPost = posts.find((post) => post.id === student.studentId);
+      console.log(posts);
       console.log(studentPost);
       if (studentPost) {
         // 該当するpostが存在し、そのtagsが検索タグのキーワードを含むかどうかチェック
