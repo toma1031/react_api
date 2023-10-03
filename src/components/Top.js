@@ -185,6 +185,8 @@ const Top = () => {
       }
       // 学生のstudentIdに基づいて、該当するpost（Studentコンポーネント）を取得
       const studentPost = posts.find((post) => post.id === student.studentId);
+      console.log(student);
+      console.log(student.studentId);
       console.log(posts);
       console.log(studentPost);
       if (studentPost) {
