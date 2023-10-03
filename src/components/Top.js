@@ -184,7 +184,7 @@ const Top = () => {
         return;
       }
       // 学生のstudentIdに基づいて、該当するpost（Studentコンポーネント）を取得
-      const studentPost = posts.find((post) => post.id === student.studentId);
+      const studentPost = posts.find((post) => parseInt(post.id) === parseInt(student.studentId));
       console.log(student);
       console.log(student.studentId);
       console.log(posts);
