@@ -189,9 +189,9 @@ const Top = () => {
       console.log(student.studentId);
       console.log(posts);
       console.log(studentPost);
-      if (studentPost) {
+      if (studentPost.length > 0) {
         // 該当するpostが存在し、そのtagsが検索タグのキーワードを含むかどうかチェック
-        return studentTags.includes(searchTagKeyword);
+        return studentPost;
       } else {
         console.log("Student post not found");
       }
