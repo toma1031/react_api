@@ -184,13 +184,17 @@ const Top = () => {
         return;
       }
       // 学生のstudentIdに基づいて、該当するpost（Studentコンポーネント）を取得
-      const studentPost = posts.find((post) => parseInt(post.id) === parseInt(student.studentId));
+      const studentPost = posts.find(
+        (post) => parseInt(post.id) === parseInt(student.studentId)
+      );
       console.log(student);
       console.log(student.studentId);
       console.log(posts);
-      console.log(studentPost);
+      console.log("studentPost", studentPost);
+      console.log("studentPost.length", studentPost.length);
       if (studentPost.length > 0) {
         // 該当するpostが存在し、そのtagsが検索タグのキーワードを含むかどうかチェック
+        console.log("studentPost", studentPost);
         return studentPost;
       } else {
         console.log("Student post not found");
