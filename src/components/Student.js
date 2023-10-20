@@ -7,6 +7,7 @@ const [show, setShow] = useState(false)
 // Gradeの平均スコアを出す関数
   const gradesAverage = (grades) => {
     let sum = 0;
+    console.log("grades", grades)
     grades.forEach(function(score) {
       sum += Number(score);
     });

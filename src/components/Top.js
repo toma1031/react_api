@@ -192,11 +192,13 @@ const Top = () => {
       console.log(posts);
       console.log("studentPost", studentPost);
       console.log("studentPost.length", studentPost.length);
-      if (studentPost.length > 0) {
-        // 該当するpostが存在し、そのtagsが検索タグのキーワードを含むかどうかチェック
+      if (studentPost !== undefined) {
+        // studentPostが存在する場合の処理
         console.log("studentPost", studentPost);
+        console.log("ifに入りました");
         return studentPost;
       } else {
+        // studentPostが存在しない場合の処理
         console.log("Student post not found");
       }
     });
