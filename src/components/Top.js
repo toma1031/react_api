@@ -187,9 +187,9 @@ const Top = () => {
       const studentPost = posts.find(
         (post) => parseInt(post.id) === parseInt(student.studentId)
       );
-      console.log(student);
-      console.log(student.studentId);
-      console.log(posts);
+      console.log("student", student);
+      console.log("student.studentId", student.studentId);
+      console.log("posts", posts);
       console.log("studentPost", studentPost);
       console.log("studentPost.length", studentPost.length);
       if (studentPost !== undefined) {
