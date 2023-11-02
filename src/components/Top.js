@@ -169,42 +169,36 @@ const Top = () => {
     setPosts(result);
   };
 
-  const getTagSearchResult = (posts) => {
-    console.log(searchTagKeyword);
-    if (!posts) {
-      return; // postsがまだ設定されていない場合は処理をスキップ
+
+const getTagSearchResult = (posts) => {
+  console.log("searchTagKeyword:", searchTagKeyword); 
+
+  const results = allTagsList.filter((student) => {
+    // タグを持っているかどうかを確認する
+    if (!student.tags || student.tags.length === 0) {
+      return false;
     }
 
-    const result = allTagsList.filter((student) => {
-      // 学生のタグ情報を取得
-      const studentTags = student.tags;
-      console.log(studentTags);
-      // 取得できなかったらreturn
-      if (studentTags == null) {
-        return;
-      }
-      // 学生のstudentIdに基づいて、該当するpost（Studentコンポーネント）を取得
-      const studentPost = posts.find(
-        (post) => parseInt(post.id) === parseInt(student.studentId)
-      );
-      console.log("student", student);
-      console.log("student.studentId", student.studentId);
-      console.log("posts", posts);
-      console.log("studentPost", studentPost);
-      console.log("studentPost.length", studentPost.length);
-      if (studentPost !== undefined) {
-        // studentPostが存在する場合の処理
-        console.log("studentPost", studentPost);
-        console.log("ifに入りました");
-        return studentPost;
-      } else {
-        // studentPostが存在しない場合の処理
-        console.log("Student post not found");
-      }
-    });
-    console.log(result);
-    setPosts(result);
-  };
+    // ここでタグを持っている生徒のみが残ります
+    const hasMatchingTag = student.tags.some((tag) =>
+      tag.toLowerCase().includes(searchTagKeyword.toLowerCase())
+    );
+
+    return hasMatchingTag;
+  });
+
+  // フィルターされた生徒を表示
+  const matchingPosts = results.map((result) => {
+    const matchingPost = posts.find(
+      (post) => parseInt(post.id) === parseInt(result.studentId)
+    );
+    console.log("Matching Post:", matchingPost); 
+    return matchingPost;
+  });
+
+  setPosts(matchingPosts);
+};
+
 
   return (
     <div>
